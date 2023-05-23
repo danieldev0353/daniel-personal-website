@@ -1,0 +1,44 @@
+.work {
+    height: 100%;
+    &__trail {
+        background-color: #3a424c;
+        width: 0.75rem;
+        flex-shrink: 0;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__ship {
+        width: 8rem;
+        position: fixed;
+        z-index: 3;
+    }
+
+    &__portfolio-container {
+        display: grid;
+        grid-auto-rows: 1fr;
+        gap: 1rem;
+    }
+    
+    &__wrapper {
+        display: flex;
+        align-items: stretch;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    .work {
+        &__trail {
+            display: none;
+        }
+
+        &__portfolio-container {
+            grid-auto-rows: auto;
+        }
+        
+    }
+
+}

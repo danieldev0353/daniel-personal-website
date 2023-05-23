@@ -1,0 +1,22 @@
+@import '~/assets/css/keyframes';
+
+.section-body {
+    &__title {
+        font-size: 3rem;
+        margin: 0;
+        margin-bottom: 1rem;
+    }
+
+    &__slot {
+        margin: 0;
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+}
+
+.landing-container .section-body {
+    &--animated {
+        opacity: 0;
+        animation: fade-enter-down ease-out 0.5s 1 forwards 0.2s;
+    }
+}

@@ -1,0 +1,232 @@
+@import './variables';
+
+.nav {
+    z-index: 999; 
+    
+    background: hsl(213, 14%, 15%);
+    position: fixed;
+    left: 0;
+    width: 6rem;    
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    & > * {
+        margin: 0.5rem;
+    }
+    
+    &__logo {
+        display: block;
+        background: saturate($color: darken(#21262C, 3%), $amount: 2%);
+        padding: 0.75rem 1rem;
+        border-radius: 1rem;
+        margin: 0.75rem;
+        width: 75%;
+        img {
+            width: 100%;
+        }
+    }
+
+    &__social-links {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5rem;
+        gap: 1.5rem;
+        a {
+            color: #d6dce4;
+        }
+    }
+
+    &__link-wrapper {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    &__link {
+        display: block;
+        width: 100%;
+        transition: all 0.25s ease;
+        text-decoration: none;
+
+        p {
+            border-radius: 100%;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            * {
+                color: white;
+                font-size: 1rem;
+            }
+        }
+
+        &:hover {
+            background: lighten(#191B1E, 1%);
+        }
+    }
+
+    &__mobile-link {
+        display: none;
+    }
+}
+
+.nuxt-link-exact-active {
+    left: 0;
+    background: #191B1E;
+    position: relative;
+    &:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        width: 0.25rem;
+        background: $blue;
+        height: 100%;
+    }
+}
+
+
+@media (max-width: 1300px) {
+    .nav {
+        position: fixed;
+        flex-direction: row;
+        height: $topNavWidth;
+        width: 100%;
+        &__logo {
+            display: block;
+            background: saturate($color: darken(#21262C, 3%), $amount: 2%);
+            padding: 0.25rem 1rem;
+            border-radius: 0;
+            margin: 0;
+            height: 100%;
+            width: 3rem;
+            img {
+                width: initial;
+                height: 100%;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+        &__link {
+            top: 0;
+            height: 100%;
+        }
+        &__link-wrapper {
+            flex-direction: row;
+            width: 50%;
+            height: 100%;
+        }
+        &__social-links {
+            flex-direction: row;
+            gap: 0 1.5rem;
+        }
+    }
+
+    .nuxt-link-exact-active {
+        left: 0;
+        background: #191B1E;
+        position: relative;
+        &:before {
+            bottom: 0;
+            width: 100%;
+            height: 0.25rem;
+        }
+    }
+}
+
+
+@media (max-width: 800px) {
+    .nav {
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        top: -100%;
+        transition: top 0.5s cubic-bezier(.52,.29,.44,.84);
+
+        & > *:not(.nav__mobile-link) {
+            transition: opacity 1s ease;
+            opacity: 0;
+        }
+
+        &--active {
+            & > *:not(.nav__mobile-link) {
+                opacity: 1;
+            }
+            top: 0%;
+        }
+
+        &__logo {
+            flex: 20%;
+            position: relative;
+            width: 20%;
+            max-height: 10rem;
+            & img {
+                padding: 0.5rem;
+            }
+            &:before {
+                position: absolute;
+                content: ' ';
+                display: block;
+                width: 100vw;
+                height: 100%;
+                background: inherit;
+                top: 0;
+                z-index: -1;
+                transform: translateX(-50%);
+                left: 50%;
+                
+            }
+        }
+
+        &__link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgb(5, 22, 41);
+        }
+
+        &__link-wrapper {
+            flex: 65%;
+            flex-direction: column;
+            width: 100%;
+            height: 50%;
+        }
+
+        &__social-links {
+            flex-direction: row;
+            font-size: 2rem;
+            margin: 0;
+            align-items: center;
+            flex: 15%;
+        }
+
+        &__mobile-link {
+            display: block;
+            position: fixed !important;
+            top: 0;
+            right: 0;
+            font-size: 2.5rem;
+            z-index: 999;
+            margin: 0;
+            padding: 0.5rem 1rem 1rem 1rem;
+        }
+    }
+
+    .nuxt-link-exact-active {
+        left: 0;
+        background: #191B1E;
+        position: relative;
+        &:before {
+            bottom: inital;
+            top: 0;
+        }
+    }
+}
